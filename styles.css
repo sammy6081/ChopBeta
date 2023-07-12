@@ -559,6 +559,21 @@ Menu Section
   .filter-btn{
     margin-bottom: 2rem;
   }
+  .slider-page--right {
+    left: 49%;
+  }
+  .slider-page--skew {
+    -webkit-transform: skewX(174deg);
+    transform: skewX(174deg);
+}
+.slider-page__content{
+  padding: 0 3.4rem;
+  -webkit-transform: skewX(185deg);
+    transform: skewX(185deg);
+}
+.slider-page__description {
+  font-size: .8em;
+}
 }
 @media screen and (min-width: 768px) {
   .menu-item {
@@ -570,6 +585,20 @@ Menu Section
     height: 175px;
   }
 }
+@media screen and (max-width: 992px){
+  .slider-page__content {
+    -webkit-transform: skewX(186deg);
+    transform: skewX(186deg);
+  }
+  
+.slider-page__description {
+  font-size: 1.2em;
+}
+  .slider-page--skew {
+    -webkit-transform: skewX(179deg);
+    transform: skewX(179deg);
+}
+} 
 @media screen and (min-width: 1200px) {
   .section-center {
     width: 95vw;
