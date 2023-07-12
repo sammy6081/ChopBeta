@@ -551,6 +551,20 @@ Menu Section
   margin-bottom: 0;
   padding-top: 1rem;
 }
+@media screen and (max-width: 992px){
+  .slider-page__content {
+    -webkit-transform: skewX(186deg);
+    transform: skewX(186deg);
+  }
+  
+.slider-page__description {
+  font-size: 1.2em;
+}
+  .slider-page--skew {
+    -webkit-transform: skewX(179deg);
+    transform: skewX(179deg);
+}
+} 
 @media screen and (max-width: 480px){
   .btn-container{
     display: inline-block;
@@ -585,20 +599,7 @@ Menu Section
     height: 175px;
   }
 }
-@media screen and (max-width: 992px){
-  .slider-page__content {
-    -webkit-transform: skewX(186deg);
-    transform: skewX(186deg);
-  }
-  
-.slider-page__description {
-  font-size: 1.2em;
-}
-  .slider-page--skew {
-    -webkit-transform: skewX(179deg);
-    transform: skewX(179deg);
-}
-} 
+
 @media screen and (min-width: 1200px) {
   .section-center {
     width: 95vw;
