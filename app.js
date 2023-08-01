@@ -226,66 +226,66 @@ DOMReady(readyFunction);
 const menu = [
   {
     id: 1,
-    title: "buttermilk pancakes",
+    title: "bread croissant",
     category: "breakfast",
     price: 15.99,
-    img: "./images/item-1.jpeg",
+    img: "https://cdn.pixabay.com/photo/2012/02/29/12/17/bread-18987_1280.jpg",
     desc: `I'm baby woke mlkshk wolf bitters live-edge blue bottle, hammock freegan copper mug whatever cold-pressed `,
   },
   {
     id: 2,
-    title: "diner double",
+    title: "beef & chips",
     category: "lunch",
     price: 13.99,
-    img: "./images/item-2.jpeg",
+    img: "https://cdn.pixabay.com/photo/2012/03/02/00/29/beef-20678_1280.jpg",
     desc: `vaporware iPhone mumblecore selvage raw denim slow-carb leggings gochujang helvetica man braid jianbing. Marfa thundercats `,
   },
   {
     id: 3,
-    title: "godzilla milkshake",
+    title: "chocolate smoothie",
     category: "shakes",
     price: 6.99,
-    img: "./images/item-3.jpeg",
+    img: "https://cdn.pixabay.com/photo/2015/11/23/11/54/chocolate-smoothie-1058191_1280.jpg",
     desc: `ombucha chillwave fanny pack 3 wolf moon street art photo booth before they sold out organic viral.`,
   },
   {
     id: 4,
-    title: "country delight",
+    title: "cinnamon rolls",
     category: "breakfast",
     price: 20.99,
-    img: "./images/item-4.jpeg",
+    img: "https://cdn.pixabay.com/photo/2016/05/26/16/27/cinnamon-rolls-1417494_1280.jpg",
     desc: `Shabby chic keffiyeh neutra snackwave pork belly shoreditch. Prism austin mlkshk truffaut, `,
   },
   {
     id: 5,
-    title: "egg attack",
+    title: "hamburger",
     category: "lunch",
     price: 22.99,
-    img: "./images/item-5.jpeg",
+    img: "https://cdn.pixabay.com/photo/2016/03/05/19/02/hamburger-1238246_1280.jpg",
     desc: `franzen vegan pabst bicycle rights kickstarter pinterest meditation farm-to-table 90's pop-up `,
   },
   {
     id: 6,
-    title: "oreo dream",
+    title: "milkshake",
     category: "shakes",
     price: 18.99,
-    img: "./images/item-6.jpeg",
+    img: "https://cdn.pixabay.com/photo/2018/02/23/16/58/milk-3176015_1280.jpg",
     desc: `Portland chicharrones ethical edison bulb, palo santo craft beer chia heirloom iPhone everyday`,
   },
   {
     id: 7,
-    title: "bacon overflow",
+    title: "barista coffee",
     category: "breakfast",
     price: 8.99,
-    img: "./images/item-7.jpeg",
+    img: "https://cdn.pixabay.com/photo/2020/04/17/12/49/barista-5055060_1280.jpg",
     desc: `carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird `,
   },
   {
     id: 8,
-    title: "american classic",
+    title: "schnipo schnitzel with fries",
     category: "lunch",
     price: 12.99,
-    img: "./images/item-8.jpeg",
+    img: "https://cdn.pixabay.com/photo/2016/11/19/02/22/schnipo-1837703_1280.jpg",
     desc: `on it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut  `,
   },
   {
@@ -293,15 +293,15 @@ const menu = [
     title: "quarantine buddy",
     category: "shakes",
     price: 16.99,
-    img: "./images/item-9.jpeg",
+    img: "https://cdn.pixabay.com/photo/2018/04/09/18/20/strawberry-3304967_1280.jpg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
   {
     id: 10,
-    title: "bison steak",
+    title: "vegetable skewer",
     category: "dinner",
     price: 22.99,
-    img: "./images/item-10.jpeg",
+    img: "https://cdn.pixabay.com/photo/2018/04/13/17/14/vegetable-skewer-3317060_1280.jpg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
@@ -371,4 +371,49 @@ btn.addEventListener('click',function(e){
   }
 });
 });
+}
+// creating progressive carousel in tour section
+let mainPosts = document.querySelectorAll(".main-post");
+let posts = document.querySelectorAll(".post");
+
+let i = 0;
+let postIndex = 0;
+let currentPost = posts[postIndex];
+let currentMainPost = mainPosts[postIndex];
+
+let progressInterval = setInterval(progress, 100); // 180
+
+function progress() {
+  if (i === 100) {
+    i = -5;
+    // reset progress bar
+    currentPost.querySelector(".progress-bar__fill").style.width = 0;
+    document.querySelector(
+      ".progress-bar--primary .progress-bar__fill"
+    ).style.width = 0;
+    currentPost.classList.remove("post--active");
+
+    postIndex++;
+
+    currentMainPost.classList.add("main-post--not-active");
+    currentMainPost.classList.remove("main-post--active");
+
+    // reset postIndex to loop over the slides again
+    if (postIndex === posts.length) {
+      postIndex = 0;
+    }
+
+    currentPost = posts[postIndex];
+    currentMainPost = mainPosts[postIndex];
+  } else {
+    i++;
+    currentPost.querySelector(".progress-bar__fill").style.width = `${i}%`;
+    document.querySelector(
+      ".progress-bar--primary .progress-bar__fill"
+    ).style.width = `${i}%`;
+    currentPost.classList.add("post--active");
+
+    currentMainPost.classList.add("main-post--active");
+    currentMainPost.classList.remove("main-post--not-active");
+  }
 }
